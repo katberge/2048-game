@@ -1,9 +1,10 @@
 :root {
     --main-bg-white: #f4f0e9;
-    --pale-pink: #EBCFC4;
-    --gray: #D3C4BE;
+    --pale-pink: #ebcfc4;
+    --gray: #d3c4be;
     --dark-gray: #3e3d3d;
-
+    --button-purple: #e8c4f0;
+    
     --color-a: #ffe8b1;
     --color-b: #b6916b;
     --color-c: #bd7a79;
@@ -21,10 +22,21 @@ body {
     background-color: var(--main-bg-white);
     text-align: center;
     color: var(--dark-gray);
+    font-family: 'EB Garamond', serif;
 }
 
 h1 {
     font-size: 40px;
+}
+
+button {
+    background-color: var(--button-purple);
+    font-size: 20px;
+    font-family: inherit;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 
 #grid {
@@ -36,6 +48,7 @@ h1 {
     justify-content: space-around;
     background-color: var(--gray);
     border: 5px solid var(--gray);
+    border-radius: 5px;
 }
 
 #grid div {
@@ -43,6 +56,7 @@ h1 {
     height: 90px;
     margin: 5px;
     background-color: var(--pale-pink);
+    border-radius: 5px;
 }
 
 .taken {

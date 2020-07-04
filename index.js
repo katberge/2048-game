@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const grid = document.querySelector("#grid");
     let squares = Array.from(document.querySelectorAll("#grid div"));
+    let newGameBtn = document.querySelector("#new-game");
     const width = 4;
     const numbers = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
     const colors = [
@@ -60,6 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     document.addEventListener("keyup", control);
+
+    // adds functionality to the new game button
+    newGameBtn.addEventListener("click", () => {
+        location.reload();
+    })
 
     function moveLeft() {
         for (let i = 1; i < width * width; i++) {
