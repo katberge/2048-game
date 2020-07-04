@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keyup", control);
 
     function moveLeft() {
-        for (let i = 1; i < width * width; i--) {
+        for (let i = 1; i < width * width; i++) {
             if (squares[i].classList.contains("taken") && i % width !== 0 && i !== 0) {
                 let position = i;
                 while (position % width !== 0 && !squares[position - 1].classList.contains("taken") && position !== 0) {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function moveUp() {
-        for (let i = 0; i < width * width; i--) {
+        for (let i = 0; i < width * width; i++) {
             const topRow = [0, 1, 2, 3];
             if (squares[i].classList.contains("taken") && !topRow.some(x => x == i)) {
                 let position = i;
