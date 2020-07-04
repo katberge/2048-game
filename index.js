@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             randomPosition = Math.floor(Math.random() * width * width);
         }
         squares[randomPosition].classList.add("taken");
+        squares[randomPosition].innerHTML = numbers[0];
     }
 
     // start game
