@@ -11,7 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
             randomPosition = Math.floor(Math.random() * width * width);
         }
         squares[randomPosition].classList.add("taken");
-        squares[randomPosition].innerHTML = numbers[0];
+        let twoOrFour = Math.floor(Math.random() * 5)
+        // adds either a two or four to the square (4 is less likely)
+        if (twoOrFour < 4) {
+            squares[randomPosition].innerHTML = numbers[0];
+        } else {
+            squares[randomPosition].innerHTML = numbers[1];
+        }
     }
 
     // start game
