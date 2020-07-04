@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             moveRight();
         }
         if (e.keyCode == 40) {
-            // moveDown();
+            moveDown();
         }
     }
     document.addEventListener("keyup", control);
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function moveUp() {
-        for (let i = 1; i < width * width; i++) {
+        for (let i = 0; i < width * width; i++) {
             const topRow = [0, 1, 2, 3];
             if (squares[i].classList.contains("taken") && !topRow.some(x => x == i)) {
                 let position = i;
@@ -110,5 +110,25 @@ document.addEventListener("DOMContentLoaded", () => {
         newSquare();
     }
 
-    // function moveDown() {}
+    function moveDown() {
+        for (let i = 0; i < width * width; i++) {
+            const bottomRow = [width * 3, width * 3 + 1, width * 3 + 2, width * 3 + 3];
+            if (squares[i].classList.contains("taken") && !bottomRow.some(x => x == i)) {
+                let position = i;
+                while (!bottomRow.some(x => x == position) && !squares[position + width].classList.contains("taken")) {
+                    position += width;
+                    squares[position].innerHTML = squares[position - width].innerHTML;
+                    squares[position].classList.add("taken");
+                    squares[position - width].innerHTML = "";
+                    squares[position - width].classList.remove("taken");
+                }
+                if (!bottomRow.some(x => x == position) && squares[position + width].classList.contains("taken") && squares[position].innerHTML === squares[position + width].innerHTML) {
+                    squares[position].classList.remove("taken");
+                    squares[position].innerHTML = "";
+                    squares[position + width].innerHTML *= 2;
+                }
+            }
+        }
+        newSquare();
+    }
 })
