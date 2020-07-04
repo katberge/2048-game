@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let squares = Array.from(document.querySelectorAll("#grid div"));
     const width = 4;
     const numbers = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
+    const colors = [
+        "var(--color-a)",
+        "var(--color-b)",
+        "var(--color-c)",
+        "var(--color-d)",
+        "var(--color-e)",
+        "var(--color-f)",
+        "var(--color-g)",
+        "var(--color-h)",
+        "var(--color-i)",
+        "var(--color-j)",
+        "var(--color-k)"
+    ];
 
 
     // add new square to the grid
@@ -16,8 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // adds either a two or four to the square (4 is less likely)
         if (twoOrFour < 4) {
             squares[randomPosition].innerHTML = numbers[0];
+            squares[randomPosition].style.backgroundColor = colors[0];
         } else {
             squares[randomPosition].innerHTML = numbers[1];
+            squares[randomPosition].style.backgroundColor = colors[1];
         }
     }
 
@@ -54,13 +69,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     position -= 1;
                     squares[position].innerHTML = squares[position + 1].innerHTML;
                     squares[position].classList.add("taken");
+                    let num = parseInt(squares[position].innerHTML, 10);
+                    squares[position].style.backgroundColor = colors[numbers.indexOf(num)];
                     squares[position + 1].innerHTML = "";
                     squares[position + 1].classList.remove("taken");
+                    squares[position + 1].style.backgroundColor = "";
                 }
                 if (position % width !== 0 && squares[position - 1].classList.contains("taken") && squares[position].innerHTML === squares[position - 1].innerHTML && position !== 0) {
                     squares[position].classList.remove("taken");
                     squares[position].innerHTML = "";
+                    squares[position].style.backgroundColor = "";
                     squares[position - 1].innerHTML *= 2;
+                    let num = parseInt(squares[position - 1].innerHTML, 10);
+                    squares[position - 1].style.backgroundColor = colors[numbers.indexOf(num)];
                 }
             }
         }
@@ -76,13 +97,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     position -= width;
                     squares[position].innerHTML = squares[position + width].innerHTML;
                     squares[position].classList.add("taken");
+                    let num = parseInt(squares[position].innerHTML, 10);
+                    squares[position].style.backgroundColor = colors[numbers.indexOf(num)];
                     squares[position + width].innerHTML = "";
                     squares[position + width].classList.remove("taken");
+                    squares[position + width].style.backgroundColor = "";
                 }
                 if (!topRow.some(x => x == position) && squares[position - width].classList.contains("taken") && squares[position].innerHTML === squares[position - width].innerHTML) {
                     squares[position].classList.remove("taken");
                     squares[position].innerHTML = "";
+                    squares[position].style.backgroundColor = "";
                     squares[position - width].innerHTML *= 2;
+                    let num = parseInt(squares[position - width].innerHTML, 10);
+                    squares[position - width].style.backgroundColor = colors[numbers.indexOf(num)];
                 }
             }
         }
@@ -97,13 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     position += 1;
                     squares[position].innerHTML = squares[position - 1].innerHTML;
                     squares[position].classList.add("taken");
+                    let num = parseInt(squares[position].innerHTML, 10);
+                    squares[position].style.backgroundColor = colors[numbers.indexOf(num)];
                     squares[position - 1].innerHTML = "";
                     squares[position - 1].classList.remove("taken");
+                    squares[position - 1].style.backgroundColor = "";
                 }
                 if ((position + 1) % width !== 0 && squares[position + 1].classList.contains("taken") && squares[position].innerHTML === squares[position + 1].innerHTML) {
                     squares[position].classList.remove("taken");
                     squares[position].innerHTML = "";
+                    squares[position].style.backgroundColor = "";
                     squares[position + 1].innerHTML *= 2;
+                    let num = parseInt(squares[position + 1].innerHTML, 10);
+                    squares[position + 1].style.backgroundColor = colors[numbers.indexOf(num)];
                 }
             }
         }
@@ -119,13 +152,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     position += width;
                     squares[position].innerHTML = squares[position - width].innerHTML;
                     squares[position].classList.add("taken");
+                    let num = parseInt(squares[position].innerHTML, 10);
+                    squares[position].style.backgroundColor = colors[numbers.indexOf(num)];
                     squares[position - width].innerHTML = "";
                     squares[position - width].classList.remove("taken");
+                    squares[position - width].style.backgroundColor = "";
                 }
                 if (!bottomRow.some(x => x == position) && squares[position + width].classList.contains("taken") && squares[position].innerHTML === squares[position + width].innerHTML) {
                     squares[position].classList.remove("taken");
                     squares[position].innerHTML = "";
+                    squares[position].style.backgroundColor = "";
                     squares[position + width].innerHTML *= 2;
+                    let num = parseInt(squares[position + width].innerHTML, 10);
+                    squares[position + width].style.backgroundColor = colors[numbers.indexOf(num)];
                 }
             }
         }
