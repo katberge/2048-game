@@ -29,6 +29,10 @@ h1 {
     font-size: 40px;
 }
 
+h2 {
+    display: none;
+}
+
 button {
     background-color: var(--button-purple);
     font-size: 20px;

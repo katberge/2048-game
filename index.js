@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         newSquare();
+        endGame();
     }
 
     function moveUp() {
@@ -120,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         newSquare();
+        endGame();
     }
 
     function moveRight() {
@@ -147,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         newSquare();
+        endGame();
     }
 
     function moveDown() {
@@ -175,5 +178,38 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         newSquare();
+        endGame();
+    }
+
+    // way for game to end 
+    let lost = document.querySelector("#lost");
+    let won = document.querySelector("#won");
+    function endGame() {
+        if (squares.some(x => x.innerHTML == "2048")) {
+            won.style.display = "block";
+            grid.style.filter = "brightness(70%)";
+            document.removeEventListener("keyup", control);
+        }
+        if (squares.every(x => x.classList.contains("taken"))) {
+            let answer = "yes";
+            for (let i = 0; i < width * width; i++) {
+                const topRow = [0, 1, 2, 3];
+                const bottomRow = [width * 3, width * 3 + 1, width * 3 + 2, width * 3 + 3];
+                if (i % width !== 0 && i !== 0 && squares[i].innerHTML == squares[i - 1].innerHTML) {
+                    answer = "no";
+                } else if (!topRow.some(x => x == i) && squares[i].innerHTML == squares[i - width].innerHTML){
+                    answer = "no";
+                } else if ((i + 1) % width !== 0 && squares[i].innerHTML == squares[i + 1].innerHTML) {
+                    answer = "no";
+                } else if (!bottomRow.some(x => x == i) && squares[i].innerHTML == squares[i + width].innerHTML) {
+                    answer = "no";
+                }
+            }
+            if (answer == "yes") {
+                lost.style.display = "block";
+                grid.style.filter = "brightness(70%)";
+                document.removeEventListener("keyup", control);
+            }
+        }
     }
 })
