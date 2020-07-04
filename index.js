@@ -27,4 +27,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // have game start right away
     startGame();
+
+    // adds key controls
+    function control(e) {
+        if (e.keycode == 37) {
+            // moveLeft()
+        }
+        if (e.keycode == 38) {
+            // moveUp()
+        }
+        if (e.keycode == 39) {
+            // moveRight()
+        }
+        if (e.keycode == 40) {
+            // moveDown
+        }
+    }
+    document.addEventListener("keyup", control);
+
+    // function moveLeft() {}
+    // function moveUp() {}
+    // function moveRight() {}
+    // function moveDown() {}
 })
