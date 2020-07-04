@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const width = 4;
     const numbers = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
 
+
     // add new square to the grid
     function newSquare() {
         let randomPosition = Math.floor(Math.random() * width * width);
@@ -30,22 +31,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // adds key controls
     function control(e) {
-        if (e.keycode == 37) {
-            // moveLeft()
+        if (e.keyCode == 37) {
+            moveLeft();
         }
-        if (e.keycode == 38) {
-            // moveUp()
+        if (e.keyCode == 38) {
+            // moveUp();
         }
-        if (e.keycode == 39) {
-            // moveRight()
+        if (e.keyCode == 39) {
+            // moveRight();
         }
-        if (e.keycode == 40) {
-            // moveDown
+        if (e.keyCode == 40) {
+            // moveDown();
         }
     }
     document.addEventListener("keyup", control);
 
-    // function moveLeft() {}
+    function moveLeft() {
+        for (let i = 1; i < width * width; i++) {
+            if (squares[i].classList.contains("taken") && i % width !== 0 && i !== 0) {
+                let position = i;
+                while (position % width !== 0 && !squares[position - 1].classList.contains("taken") && position !== 0) {
+                    position -= 1;
+                    squares[position].innerHTML = squares[position + 1].innerHTML;
+                    squares[position].classList.add("taken");
+                    squares[position + 1].innerHTML = "";
+                    squares[position + 1].classList.remove("taken");
+                }
+                if (position % width !== 0 && squares[position - 1].classList.contains("taken") && squares[position].innerHTML === squares[position - 1].innerHTML && position !== 0) {
+                    squares[position].classList.remove("taken");
+                    squares[position].innerHTML = "";
+                    squares[position - 1].innerHTML *= 2;
+                }
+            }
+        }
+        newSquare();
+    }
+
     // function moveUp() {}
     // function moveRight() {}
     // function moveDown() {}
