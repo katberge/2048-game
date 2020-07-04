@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             moveUp();
         }
         if (e.keyCode == 39) {
-            // moveRight();
+            moveRight();
         }
         if (e.keyCode == 40) {
             // moveDown();
@@ -89,6 +89,26 @@ document.addEventListener("DOMContentLoaded", () => {
         newSquare();
     }
 
-    // function moveRight() {}
+    function moveRight() {
+        for (let i = 0; i < width * width; i++) {
+            if (squares[i].classList.contains("taken") && (i + 1) % width !== 0) {
+                let position = i;
+                while ((position + 1) % width !== 0 && !squares[position + 1].classList.contains("taken")) {
+                    position += 1;
+                    squares[position].innerHTML = squares[position - 1].innerHTML;
+                    squares[position].classList.add("taken");
+                    squares[position - 1].innerHTML = "";
+                    squares[position - 1].classList.remove("taken");
+                }
+                if ((position + 1) % width !== 0 && squares[position + 1].classList.contains("taken") && squares[position].innerHTML === squares[position + 1].innerHTML) {
+                    squares[position].classList.remove("taken");
+                    squares[position].innerHTML = "";
+                    squares[position + 1].innerHTML *= 2;
+                }
+            }
+        }
+        newSquare();
+    }
+
     // function moveDown() {}
 })
