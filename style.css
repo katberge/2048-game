@@ -1,11 +1,34 @@
+:root {
+    --main-bg-white: #f4f0e9;
+    --pale-pink: #EBCFC4;
+    --gray: #D3C4BE;
+    --dark-gray: #6c6c6c;
+}
+
+body {
+    background-color: var(--main-bg-white);
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+h1 {
+    font-size: 40px;
+}
+
 #grid {
     width: 400px;
     height: 400px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: var(--gray);
+    border: 5px solid var(--gray);
 }
 
 #grid div {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    background-color: var(--pale-pink);
 }
