@@ -69,6 +69,30 @@ document.addEventListener("DOMContentLoaded", () => {
         location.reload();
     })
 
+    // only send new square if key moved squares
+    function test(before) {
+        let after = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                after.push(squares.indexOf(x));
+            }
+        })
+        function areSame() { 
+            if (before.length !== after.length) {
+                return false;
+            }
+            for (let i = 0; i < before.length; i++) {
+                if (before[i] !== after[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (!areSame()) {
+            newSquare();
+        }
+    }
+
     function moveLeft() {
         let before = [];
         squares.forEach(x => {
@@ -101,29 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-
-        // only send new square if key moved squares
-        let after = [];
-        squares.forEach(x => {
-            if (x.classList.contains("taken")) {
-                after.push(squares.indexOf(x));
-            }
-        })
-        function areSame() { 
-            if (before.length !== after.length) {
-                return false;
-            }
-            for (let i = 0; i < before.length; i++) {
-                if (before[i] !== after[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        if (!areSame()) {
-            newSquare();
-        }
-
+        test(before);
         endGame();
     }
 
@@ -160,29 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        
-        // only send new square if key moved squares
-        let after = [];
-        squares.forEach(x => {
-            if (x.classList.contains("taken")) {
-                after.push(squares.indexOf(x));
-            }
-        })
-        function areSame() { 
-            if (before.length !== after.length) {
-                return false;
-            }
-            for (let i = 0; i < before.length; i++) {
-                if (before[i] !== after[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        if (!areSame()) {
-            newSquare();
-        }
-        
+        test(before);
         endGame();
     }
 
@@ -218,29 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        
-        // only send new square if key moved squares
-        let after = [];
-        squares.forEach(x => {
-            if (x.classList.contains("taken")) {
-                after.push(squares.indexOf(x));
-            }
-        })
-        function areSame() { 
-            if (before.length !== after.length) {
-                return false;
-            }
-            for (let i = 0; i < before.length; i++) {
-                if (before[i] !== after[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        if (!areSame()) {
-            newSquare();
-        }
-        
+        test(before);
         endGame();
     }
 
@@ -277,29 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        
-        // only send new square if key moved squares
-        let after = [];
-        squares.forEach(x => {
-            if (x.classList.contains("taken")) {
-                after.push(squares.indexOf(x));
-            }
-        })
-        function areSame() { 
-            if (before.length !== after.length) {
-                return false;
-            }
-            for (let i = 0; i < before.length; i++) {
-                if (before[i] !== after[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        if (!areSame()) {
-            newSquare();
-        }
-        
+        test(before);
         endGame();
     }
 
