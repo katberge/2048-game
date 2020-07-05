@@ -36,11 +36,26 @@ h2 {
 button {
     background-color: var(--button-purple);
     font-size: 20px;
+    color: inherit;
     font-family: inherit;
-    padding: 5px 10px;
     border: none;
     border-radius: 3px;
-    margin-bottom: 20px;
+    height: 30px;
+    transition: background-color 0.5s ease-out;
+}
+
+button:hover {
+    background-color: rgb(195, 145, 206);
+}
+
+#scoreboard {
+    font-size: 20px;
+    background-color: #c4f0e8;
+    border-radius: 5px;
+    width: fit-content;
+    height: 30px;
+    margin: 10px auto;
+    padding: 0 10px;
 }
 
 #grid {

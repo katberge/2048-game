@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "var(--color-j)",
         "var(--color-k)"
     ];
+    const scoreDisplay = document.querySelector("#score");
+    let score = 0;
 
 
     // add new square to the grid
@@ -94,6 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     squares[position - 1].innerHTML *= 2;
                     let num = parseInt(squares[position - 1].innerHTML, 10);
                     squares[position - 1].style.backgroundColor = colors[numbers.indexOf(num)];
+                    score += num;
+                    scoreDisplay.innerHTML = score;
                 }
             }
         }
@@ -151,6 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     squares[position - width].innerHTML *= 2;
                     let num = parseInt(squares[position - width].innerHTML, 10);
                     squares[position - width].style.backgroundColor = colors[numbers.indexOf(num)];
+                    score += num;
+                    scoreDisplay.innerHTML = score;
                 }
             }
         }
@@ -207,6 +213,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     squares[position + 1].innerHTML *= 2;
                     let num = parseInt(squares[position + 1].innerHTML, 10);
                     squares[position + 1].style.backgroundColor = colors[numbers.indexOf(num)];
+                    score += num;
+                    scoreDisplay.innerHTML = score;
                 }
             }
         }
@@ -264,6 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     squares[position + width].innerHTML *= 2;
                     let num = parseInt(squares[position + width].innerHTML, 10);
                     squares[position + width].style.backgroundColor = colors[numbers.indexOf(num)];
+                    score += num;
+                    scoreDisplay.innerHTML = score;
                 }
             }
         }
