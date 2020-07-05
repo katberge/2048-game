@@ -68,6 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     function moveLeft() {
+        let before = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                before.push(squares.indexOf(x));
+            }
+        })
         for (let i = 1; i < width * width; i++) {
             if (squares[i].classList.contains("taken") && i % width !== 0 && i !== 0) {
                 let position = i;
@@ -91,11 +97,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        newSquare();
+
+        // only send new square if key moved squares
+        let after = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                after.push(squares.indexOf(x));
+            }
+        })
+        function areSame() { 
+            if (before.length !== after.length) {
+                return false;
+            }
+            for (let i = 0; i < before.length; i++) {
+                if (before[i] !== after[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (!areSame()) {
+            newSquare();
+        }
+
         endGame();
     }
 
     function moveUp() {
+        let before = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                before.push(squares.indexOf(x));
+            }
+        })
         for (let i = 0; i < width * width; i++) {
             const topRow = [0, 1, 2, 3];
             if (squares[i].classList.contains("taken") && !topRow.some(x => x == i)) {
@@ -120,11 +154,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        newSquare();
+        
+        // only send new square if key moved squares
+        let after = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                after.push(squares.indexOf(x));
+            }
+        })
+        function areSame() { 
+            if (before.length !== after.length) {
+                return false;
+            }
+            for (let i = 0; i < before.length; i++) {
+                if (before[i] !== after[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (!areSame()) {
+            newSquare();
+        }
+        
         endGame();
     }
 
     function moveRight() {
+        let before = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                before.push(squares.indexOf(x));
+            }
+        })
         for (let i = width * width - 1; i >= 0; i--) {
             if (squares[i].classList.contains("taken") && (i + 1) % width !== 0) {
                 let position = i;
@@ -148,11 +210,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        newSquare();
+        
+        // only send new square if key moved squares
+        let after = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                after.push(squares.indexOf(x));
+            }
+        })
+        function areSame() { 
+            if (before.length !== after.length) {
+                return false;
+            }
+            for (let i = 0; i < before.length; i++) {
+                if (before[i] !== after[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (!areSame()) {
+            newSquare();
+        }
+        
         endGame();
     }
 
     function moveDown() {
+        let before = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                before.push(squares.indexOf(x));
+            }
+        })
         for (let i = width * width - 1; i >= 0; i--) {
             const bottomRow = [width * 3, width * 3 + 1, width * 3 + 2, width * 3 + 3];
             if (squares[i].classList.contains("taken") && !bottomRow.some(x => x == i)) {
@@ -177,7 +267,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        newSquare();
+        
+        // only send new square if key moved squares
+        let after = [];
+        squares.forEach(x => {
+            if (x.classList.contains("taken")) {
+                after.push(squares.indexOf(x));
+            }
+        })
+        function areSame() { 
+            if (before.length !== after.length) {
+                return false;
+            }
+            for (let i = 0; i < before.length; i++) {
+                if (before[i] !== after[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (!areSame()) {
+            newSquare();
+        }
+        
         endGame();
     }
 
